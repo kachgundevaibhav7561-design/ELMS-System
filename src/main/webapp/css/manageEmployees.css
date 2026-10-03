@@ -1,0 +1,956 @@
+@charset "UTF-8";
+/* =================================
+   MANAGE EMPLOYEES
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    font-family:
+        "Segoe UI",
+        Tahoma,
+        Geneva,
+        Verdana,
+        sans-serif;
+
+    background: #f1f5f9;
+
+    color: #1e293b;
+
+}
+
+
+/* =================================
+   SIDEBAR
+================================= */
+
+.sidebar {
+
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    width: 250px;
+
+    height: 100vh;
+
+    background:
+        linear-gradient(
+            160deg,
+            #111827,
+            #1e293b,
+            #312e81
+        );
+
+    color: white;
+
+    display: flex;
+
+    flex-direction: column;
+
+    box-shadow:
+        5px 0 25px
+        rgba(0,0,0,0.15);
+
+    z-index: 1000;
+
+}
+
+
+.logo {
+
+    height: 75px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 0 25px;
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.1);
+
+}
+
+
+.logo i {
+
+    color: #60a5fa;
+
+    font-size: 25px;
+
+}
+
+
+.admin-info {
+
+    text-align: center;
+
+    padding: 25px 15px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.1);
+
+}
+
+
+.admin-avatar {
+
+    width: 65px;
+
+    height: 65px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #3b82f6,
+            #6366f1
+        );
+
+    font-size: 27px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.admin-info h5 {
+
+    margin-bottom: 3px;
+
+}
+
+
+.admin-info small {
+
+    color:
+        rgba(255,255,255,0.6);
+
+}
+
+
+.sidebar-menu {
+
+    flex: 1;
+
+    padding: 20px 15px;
+
+}
+
+
+.sidebar-menu a,
+.logout-section a {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 14px 18px;
+
+    margin-bottom: 8px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    color:
+        rgba(255,255,255,0.7);
+
+    transition:
+        all 0.3s ease;
+
+}
+
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+
+    color: white;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(59,130,246,0.3),
+            rgba(99,102,241,0.2)
+        );
+
+    transform:
+        translateX(5px);
+
+}
+
+
+.logout-section {
+
+    padding: 15px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.1);
+
+}
+
+
+.logout-section a:hover {
+
+    color: #fca5a5;
+
+    background:
+        rgba(239,68,68,0.15);
+
+}
+
+
+/* =================================
+   MAIN CONTENT
+================================= */
+
+.main-content {
+
+    margin-left: 250px;
+
+    min-height: 100vh;
+
+    padding: 30px 40px;
+
+}
+
+
+/* =================================
+   TOP HEADER
+================================= */
+
+.top-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content:
+        space-between;
+
+    margin-bottom: 30px;
+
+}
+
+
+.top-header h2 {
+
+    font-weight: 700;
+
+    margin-bottom: 5px;
+
+}
+
+
+.top-header p {
+
+    color: #64748b;
+
+    margin: 0;
+
+}
+
+
+.admin-profile {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+.admin-profile > i {
+
+    font-size: 38px;
+
+    color: #4f46e5;
+
+}
+
+
+.admin-profile div {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+.admin-profile small {
+
+    color: #64748b;
+
+}
+
+
+/* =================================
+   PAGE ACTIONS
+================================= */
+
+.page-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content:
+        space-between;
+
+    margin-bottom: 20px;
+
+}
+
+
+.page-actions h4 {
+
+    font-weight: 700;
+
+    margin-bottom: 4px;
+
+}
+
+
+.page-actions p {
+
+    color: #64748b;
+
+    margin: 0;
+
+}
+
+
+/* Add Employee */
+
+.add-btn {
+
+    border: none;
+
+    padding: 11px 18px;
+
+    border-radius: 9px;
+
+    color: white;
+
+    font-weight: 600;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #4f46e5
+        );
+
+    box-shadow:
+        0 6px 15px
+        rgba(37,99,235,0.2);
+
+    transition:
+        all 0.3s ease;
+
+}
+
+
+.add-btn i {
+
+    margin-right: 7px;
+
+}
+
+
+.add-btn:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 10px 22px
+        rgba(37,99,235,0.3);
+
+}
+
+
+/* =================================
+   SEARCH SECTION
+================================= */
+
+.search-section {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content:
+        space-between;
+
+    gap: 20px;
+
+    padding: 18px 20px;
+
+    background: white;
+
+    border-radius: 14px;
+
+    margin-bottom: 20px;
+
+    box-shadow:
+        0 5px 20px
+        rgba(0,0,0,0.04);
+
+}
+
+
+.search-box {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    width: 400px;
+
+    padding: 10px 15px;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 9px;
+
+    transition:
+        all 0.3s ease;
+
+}
+
+
+.search-box:focus-within {
+
+    border-color: #3b82f6;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(59,130,246,0.1);
+
+}
+
+
+.search-box i {
+
+    color: #94a3b8;
+
+}
+
+
+.search-box input {
+
+    width: 100%;
+
+    border: none;
+
+    outline: none;
+
+    font-size: 14px;
+
+}
+
+
+.employee-count {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #64748b;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+}
+
+
+/* =================================
+   EMPLOYEE CARD
+================================= */
+
+.employee-card {
+
+    background: white;
+
+    padding: 10px 20px;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 5px 20px
+        rgba(0,0,0,0.05);
+
+    animation:
+        cardAppear 0.7s ease;
+
+}
+
+
+/* =================================
+   TABLE
+================================= */
+
+.employee-table {
+
+    vertical-align: middle;
+
+    margin: 0;
+
+}
+
+
+.employee-table thead th {
+
+    padding: 17px 12px;
+
+    background: #f8fafc;
+
+    color: #64748b;
+
+    font-size: 12px;
+
+    text-transform: uppercase;
+
+    border-bottom:
+        2px solid #e2e8f0;
+
+    white-space: nowrap;
+
+}
+
+
+.employee-table tbody td {
+
+    padding: 18px 12px;
+
+    color: #475569;
+
+    border-bottom:
+        1px solid #f1f5f9;
+
+    white-space: nowrap;
+
+}
+
+
+.employee-table tbody tr {
+
+    transition:
+        all 0.3s ease;
+
+}
+
+
+.employee-table tbody tr:hover {
+
+    background: #f8fafc;
+
+}
+
+
+/* =================================
+   EMPLOYEE CELL
+================================= */
+
+.employee-cell {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.employee-avatar {
+
+    width: 42px;
+
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color: white;
+
+    font-weight: 700;
+
+    background:
+        linear-gradient(
+            135deg,
+            #3b82f6,
+            #6366f1
+        );
+
+}
+
+
+.employee-cell div:last-child {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+}
+
+
+.employee-cell small {
+
+    color: #94a3b8;
+
+    font-size: 11px;
+
+}
+
+
+/* =================================
+   EMPLOYEE ID
+================================= */
+
+.employee-id {
+
+    padding: 5px 9px;
+
+    border-radius: 6px;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+}
+
+
+/* =================================
+   STATUS
+================================= */
+
+.active-status,
+.inactive-status {
+
+    display: inline-block;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+}
+
+
+.active-status {
+
+    color: #15803d;
+
+    background: #dcfce7;
+
+}
+
+
+.inactive-status {
+
+    color: #b91c1c;
+
+    background: #fee2e2;
+
+}
+
+
+/* =================================
+   ACTION BUTTONS
+================================= */
+
+.action-buttons {
+
+    display: flex;
+
+    gap: 7px;
+
+}
+
+
+.action-buttons button {
+
+    width: 34px;
+
+    height: 34px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    transition:
+        all 0.3s ease;
+
+}
+
+
+/* View */
+
+.view-btn {
+
+    color: #2563eb;
+
+    background: #eff6ff;
+
+}
+
+
+.view-btn:hover {
+
+    color: white;
+
+    background: #2563eb;
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* Edit */
+
+.edit-btn {
+
+    color: #d97706;
+
+    background: #fef3c7;
+
+}
+
+
+.edit-btn:hover {
+
+    color: white;
+
+    background: #d97706;
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* Delete */
+
+.delete-btn {
+
+    color: #dc2626;
+
+    background: #fee2e2;
+
+}
+
+
+.delete-btn:hover {
+
+    color: white;
+
+    background: #dc2626;
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =================================
+   ANIMATION
+================================= */
+
+@keyframes cardAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =================================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 900px) {
+
+    .search-section {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+
+    .search-box {
+
+        width: 100%;
+
+    }
+
+
+    .employee-count {
+
+        justify-content: flex-end;
+
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .sidebar {
+
+        width: 70px;
+
+    }
+
+
+    .logo span,
+    .admin-info h5,
+    .admin-info small,
+    .sidebar-menu span,
+    .logout-section span {
+
+        display: none;
+
+    }
+
+
+    .logo {
+
+        justify-content: center;
+
+        padding: 0;
+
+    }
+
+
+    .admin-avatar {
+
+        width: 45px;
+
+        height: 45px;
+
+        font-size: 20px;
+
+    }
+
+
+    .sidebar-menu a,
+    .logout-section a {
+
+        justify-content: center;
+
+        padding: 13px;
+
+    }
+
+
+    .main-content {
+
+        margin-left: 70px;
+
+        padding: 20px;
+
+    }
+
+
+    .top-header {
+
+        align-items: flex-start;
+
+    }
+
+
+    .admin-profile div {
+
+        display: none;
+
+    }
+
+
+    .page-actions {
+
+        align-items: flex-start;
+
+        gap: 15px;
+
+    }
+
+
+    .add-btn {
+
+        white-space: nowrap;
+
+    }
+
+}

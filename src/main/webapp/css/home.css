@@ -1,0 +1,661 @@
+
+@charset "UTF-8";
+
+/* =========================================
+   ELMS HOME PAGE
+   iOS 26 INSPIRED LIQUID GLASS DESIGN
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                 "Segoe UI", sans-serif;
+    background: #eef3f8;
+    color: #172033;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   HERO BACKGROUND
+========================================= */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    padding: 95px 20px 110px;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 15% 20%,
+            rgba(120, 180, 255, 0.55),
+            transparent 30%),
+
+        radial-gradient(circle at 85% 75%,
+            rgba(170, 145, 255, 0.45),
+            transparent 32%),
+
+        linear-gradient(
+            135deg,
+            #dfeeff 0%,
+            #edf2ff 45%,
+            #e8e4ff 100%
+        );
+}
+
+
+/* =========================================
+   MOVING LIGHT EFFECTS
+========================================= */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    top: -180px;
+    left: -120px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.75),
+            rgba(120, 170, 255, 0.18),
+            transparent 70%
+        );
+
+    filter: blur(5px);
+
+    animation: liquidMove 10s ease-in-out infinite;
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 480px;
+    height: 480px;
+
+    right: -180px;
+    bottom: -220px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.7),
+            rgba(170, 150, 255, 0.18),
+            transparent 70%
+        );
+
+    filter: blur(8px);
+
+    animation: liquidMoveReverse 12s ease-in-out infinite;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.hero .container {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.hero .text-center {
+    margin-bottom: 55px !important;
+
+    animation:
+        headingIn 0.9s ease-out;
+}
+
+.hero h1 {
+    margin-bottom: 14px;
+
+    font-size: 46px;
+    font-weight: 800;
+    letter-spacing: -1px;
+
+    color: #172033;
+
+    text-shadow:
+        0 5px 25px rgba(60, 80, 120, 0.15);
+}
+
+.hero .text-center p {
+    margin-bottom: 0;
+
+    font-size: 18px;
+    font-weight: 500;
+
+    color: #61708a;
+}
+
+
+/* =========================================
+   LOGIN CARD CONTAINER
+========================================= */
+
+.login-card {
+    position: relative;
+
+    height: 100%;
+
+    padding: 42px 32px 35px;
+
+    text-align: center;
+
+    /*
+       Liquid glass material
+    */
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.72),
+            rgba(255, 255, 255, 0.38)
+        );
+
+    backdrop-filter: blur(24px) saturate(145%);
+    -webkit-backdrop-filter: blur(24px) saturate(145%);
+
+    border: 1px solid rgba(255, 255, 255, 0.75);
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 20px 55px rgba(45, 65, 100, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.85);
+
+    overflow: hidden;
+
+    animation: cardIn 0.9s ease-out both;
+
+    transition:
+        transform 0.4s cubic-bezier(.2,.8,.2,1),
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
+}
+
+
+/* =========================================
+   ADMIN / EMPLOYEE POSITION
+========================================= */
+
+/*
+   Bootstrap already places the cards
+   left and right because they are inside
+   the same row.
+*/
+
+.row > div:first-child .login-card {
+    animation-delay: 0.15s;
+}
+
+.row > div:nth-child(2) .login-card {
+    animation-delay: 0.3s;
+}
+
+
+/* =========================================
+   GLASS SHINE
+========================================= */
+
+.login-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 80%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            100deg,
+            transparent,
+            rgba(255, 255, 255, 0.45),
+            transparent
+        );
+
+    transform: skewX(-18deg);
+
+    transition: left 0.8s ease;
+}
+
+.login-card:hover::before {
+    left: 140%;
+}
+
+
+/* =========================================
+   TOP GLASS LINE
+========================================= */
+
+.login-card::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 12%;
+
+    width: 76%;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.95),
+            transparent
+        );
+}
+
+
+/* =========================================
+   CARD HOVER
+========================================= */
+
+.login-card:hover {
+    transform: translateY(-10px) scale(1.015);
+
+    border-color:
+        rgba(255, 255, 255, 0.95);
+
+    box-shadow:
+        0 30px 70px rgba(45, 65, 100, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+
+/* =========================================
+   ICON
+========================================= */
+
+.icon {
+    position: relative;
+    z-index: 2;
+
+    width: 92px;
+    height: 92px;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 46px;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.85),
+            rgba(255, 255, 255, 0.45)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.85);
+
+    box-shadow:
+        0 12px 30px rgba(50, 80, 130, 0.12),
+        inset 0 1px 1px rgba(255, 255, 255, 0.9);
+
+    animation:
+        iconFloat 4s ease-in-out infinite;
+
+    transition:
+        transform 0.35s ease;
+}
+
+.login-card:hover .icon {
+    transform: translateY(-5px) scale(1.06);
+}
+
+
+/* =========================================
+   ADMIN ICON
+========================================= */
+
+.row > div:first-child .icon {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(220, 235, 255, 0.9),
+            rgba(185, 215, 255, 0.45)
+        );
+
+    box-shadow:
+        0 14px 32px rgba(50, 120, 220, 0.16),
+        inset 0 1px 1px rgba(255, 255, 255, 0.95);
+}
+
+
+/* =========================================
+   EMPLOYEE ICON
+========================================= */
+
+.row > div:nth-child(2) .icon {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(220, 255, 240, 0.9),
+            rgba(185, 245, 225, 0.45)
+        );
+
+    box-shadow:
+        0 14px 32px rgba(30, 160, 110, 0.14),
+        inset 0 1px 1px rgba(255, 255, 255, 0.95);
+}
+
+
+/* =========================================
+   CARD TEXT
+========================================= */
+
+.login-card h3 {
+    position: relative;
+    z-index: 2;
+
+    margin-bottom: 13px;
+
+    font-size: 25px;
+    font-weight: 750;
+
+    color: #172033;
+}
+
+.login-card p {
+    position: relative;
+    z-index: 2;
+
+    min-height: 65px;
+
+    margin-bottom: 27px;
+
+    color: #64748b;
+
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.login-card .btn {
+    position: relative;
+    z-index: 3;
+
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 17px;
+
+    font-size: 15px;
+    font-weight: 650;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        filter 0.3s ease;
+}
+
+
+/* =========================================
+   ADMIN BUTTON
+========================================= */
+
+.login-card .btn-primary {
+    background:
+        linear-gradient(
+            135deg,
+            #3b82f6,
+            #6366f1
+        );
+
+    box-shadow:
+        0 10px 25px rgba(59, 130, 246, 0.25);
+}
+
+
+/* =========================================
+   EMPLOYEE BUTTON
+========================================= */
+
+.login-card .btn-success {
+    background:
+        linear-gradient(
+            135deg,
+            #10b981,
+            #0d9488
+        );
+
+    box-shadow:
+        0 10px 25px rgba(16, 185, 129, 0.23);
+}
+
+
+/* =========================================
+   BUTTON HOVER
+========================================= */
+
+.login-card .btn:hover {
+    transform: translateY(-3px);
+
+    filter: brightness(1.04);
+
+    box-shadow:
+        0 15px 32px rgba(30, 50, 80, 0.2);
+}
+
+.login-card .btn i {
+    margin-right: 8px;
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes headingIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(-22px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes cardIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+@keyframes iconFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+
+@keyframes liquidMove {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(90px, 45px) scale(1.12);
+    }
+}
+
+
+@keyframes liquidMoveReverse {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(-70px, -45px) scale(1.1);
+    }
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 991px) {
+
+    .hero {
+        padding-top: 75px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .login-card {
+        padding: 36px 25px 30px;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .hero {
+        min-height: auto;
+        padding: 65px 15px 75px;
+    }
+
+    .hero .text-center {
+        margin-bottom: 38px !important;
+    }
+
+    .hero h1 {
+        font-size: 33px;
+        line-height: 1.15;
+    }
+
+    .hero .text-center p {
+        font-size: 16px;
+    }
+
+    .login-card {
+        padding: 32px 22px 27px;
+        border-radius: 26px;
+    }
+
+    .icon {
+        width: 82px;
+        height: 82px;
+        font-size: 41px;
+        border-radius: 24px;
+    }
+
+    .login-card h3 {
+        font-size: 23px;
+    }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+    .hero {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .hero h1 {
+        font-size: 29px;
+    }
+
+    .login-card {
+        border-radius: 24px;
+    }
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
